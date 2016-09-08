@@ -12,7 +12,7 @@
     "module_path": "build/{configuration}/",
     "host": "https://github.com/EmergingTechnologyAdvisors/node-serialport/releases/download/5.0.0-beta2"
   },
-  "main": "./lib/serialport",
+  "main": "./lib",
   "repository": {
     "type": "git",
     "url": "git://github.com/EmergingTechnologyAdvisors/node-serialport.git"
@@ -73,7 +73,7 @@
     "jsdoc-to-markdown": "^2.0.1",
     "mocha": "^3.1.1",
     "node-pre-gyp-github": "^1.1.2",
-    "sandboxed-module": "^2.0.3",
+    "proxyquire": "^1.7.10",
     "sinon": "^1.17.3"
   },
   "bundledDependencies": [
@@ -94,7 +94,8 @@
     "rebuild-all": "npm rebuild && node-gyp rebuild",
     "stress": "mocha --no-timeouts test/arduinoTest/stress.js",
     "lint": "eslint *.js lib/**/*.js test/**/*.js bin/**/*.js examples/**/*.js",
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha test/*.js test/arduinoTest/integration.js test/integration-lite.js",
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha",
+    "arduino-test":"TEST_PORT=$(./bin/find-arduino.js) npm test",
     "valgrind": "valgrind --leak-check=full --show-possibly-lost=no node --expose-gc --trace-gc node_modules/.bin/grunt test"
   },
   "gypfile": true
